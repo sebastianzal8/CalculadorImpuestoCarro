@@ -180,7 +180,11 @@ public class CalculadorImpuestos {
     private RangoImpuesto buscarRangoImpuesto(double valor) {
         RangoImpuesto rango = null;
 
-        // TODO: Buscar el rangoImpuesto. Use el método contieneA(valor)
+        for (int i = 0; i < rangosImpuesto.length; i++) {
+            if (rangosImpuesto[i].contieneA(valor)){
+                rango = rangosImpuesto[i];
+            }
+        }
 
         return rango;
     }
@@ -200,7 +204,16 @@ public class CalculadorImpuestos {
         // Calcula el impuesto según el precio del vehículo
         RangoImpuesto rango = buscarRangoImpuesto(precio);
 
-        // TODO: Encontrar el valor del pago de impuesto de acuerdo a los datos de entrada
+        pago = (precio*rango.darPorcentaje())/100;
+        if (descProntoPago==true){
+            pago = pago-((pago*PORC_DESC_PRONTO_PAGO)/100);
+        }
+        if (descServicioPublico==true){
+            pago = pago-VALOR_DESC_SERVICIO_PUBLICO;
+        }
+        if (descTrasladoCuenta==true){
+            pago = pago-((pago*PORC_DESC_TRASLADO_CUENTA)/100);
+        }
 
         return pago;
     }
