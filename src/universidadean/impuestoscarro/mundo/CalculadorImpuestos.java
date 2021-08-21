@@ -334,26 +334,30 @@ public class CalculadorImpuestos {
      */
     public Vehiculo buscarVehiculoPorLinea(String linea) {
         Vehiculo buscado = null;
+        for (Vehiculo v : vehiculos ){
+            if (v.darLinea().equalsIgnoreCase(linea)) {
+                buscado = v;
+            }
+        } return buscado;
+        }
 
-
-
-        // TODO: Buscar el primer vehículo que tiene la línea dada
-
-        return buscado;
-    }
 
     /**
      * Busca el vehículo más antiguo, lo asigna como actual y lo retorna.
      *
      * @return El vehículo más antiguo.
      */
-    public Vehiculo buscarVehiculoMasAntiguo() {
-        Vehiculo buscado = null;
 
-        // TODO: Buscar el vehículo más antiguo del sistema
+    /** public Vehiculo buscarVehiculoMasAntiguo() {
+        Vehiculo buscado = null;
+        for (Vehiculo v : vehiculos ){
+           if (Integer.parseInt(v.darAnio()) < Integer.parseInt(buscado.darAnio())) {
+            buscado = v;
+        } }
+
 
         return buscado;
-    }
+    }*/
 
     /**
      * Calcula el promedio de los precios de todos los automóviles que están en el sistema
