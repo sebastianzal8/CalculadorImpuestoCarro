@@ -317,9 +317,11 @@ public class CalculadorImpuestos {
      */
     public Vehiculo buscarVehiculoPorMarca(String marca) {
         Vehiculo buscado = null;
-
-        // TODO: Retornar el primer vehículo que tiene la marca dada
-
+        for (Vehiculo v : vehiculos ){
+            if (v.darMarca().equalsIgnoreCase(marca)) {
+                buscado = v;
+            }
+        }
         return buscado;
     }
 
@@ -332,6 +334,8 @@ public class CalculadorImpuestos {
      */
     public Vehiculo buscarVehiculoPorLinea(String linea) {
         Vehiculo buscado = null;
+
+
 
         // TODO: Buscar el primer vehículo que tiene la línea dada
 
