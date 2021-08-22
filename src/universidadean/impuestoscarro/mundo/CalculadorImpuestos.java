@@ -181,13 +181,11 @@ public class CalculadorImpuestos {
      */
     private RangoImpuesto buscarRangoImpuesto(double valor) {
         RangoImpuesto rango = null;
-
         for (int i = 0; i < rangosImpuesto.length; i++) {
             if (rangosImpuesto[i].contieneA(valor)){
                 rango = rangosImpuesto[i];
             }
         }
-
         return rango;
     }
 
@@ -201,22 +199,18 @@ public class CalculadorImpuestos {
      * @return Valor a pagar de acuerdo con las características del vehículo y los descuentos que se pueden aplicar.
      */
     public double calcularPago(boolean descProntoPago, boolean descServicioPublico, boolean descTrasladoCuenta) {
-        double pago = 0.0;
-        double precio = darVehiculoActual().darPrecio();
-        // Calcula el impuesto según el precio del vehículo
+        double pago = 0.0, precio = darVehiculoActual().darPrecio();
         RangoImpuesto rango = buscarRangoImpuesto(precio);
-
         pago = (precio*rango.darPorcentaje())/100;
-        if (descProntoPago==true){
+        if (descProntoPago){
             pago = pago-((pago*PORC_DESC_PRONTO_PAGO)/100);
         }
-        if (descServicioPublico==true){
+        if (descServicioPublico){
             pago = pago-VALOR_DESC_SERVICIO_PUBLICO;
         }
-        if (descTrasladoCuenta==true){
+        if (descTrasladoCuenta){
             pago = pago-((pago*PORC_DESC_TRASLADO_CUENTA)/100);
         }
-
         return pago;
     }
 
@@ -369,10 +363,9 @@ public class CalculadorImpuestos {
     public double promedioPreciosVehiculos() {
         double promedio = 0.0;
         for (int i = 0; i < vehiculos.length; i++) {
-            System.out.println(vehiculos[i].darPrecio());
             promedio = promedio + vehiculos[i].darPrecio();
         }
-         promedio = promedio/vehiculos.length;
+        promedio = promedio/vehiculos.length;
         return promedio;
     }
 
