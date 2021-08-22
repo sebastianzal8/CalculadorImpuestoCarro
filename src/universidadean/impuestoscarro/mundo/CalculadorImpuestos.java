@@ -13,6 +13,8 @@
 package universidadean.impuestoscarro.mundo;
 
 import java.io.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.*;
 
 /**
@@ -348,7 +350,7 @@ public class CalculadorImpuestos {
      * @return El vehículo más antiguo.
      */
 
-    /** public Vehiculo buscarVehiculoMasAntiguo() {
+    public Vehiculo buscarVehiculoMasAntiguo() {
         Vehiculo buscado = null;
         for (Vehiculo v : vehiculos ){
            if (Integer.parseInt(v.darAnio()) < Integer.parseInt(buscado.darAnio())) {
@@ -357,7 +359,7 @@ public class CalculadorImpuestos {
 
 
         return buscado;
-    }*/
+    }
 
     /**
      * Calcula el promedio de los precios de todos los automóviles que están en el sistema
@@ -366,7 +368,11 @@ public class CalculadorImpuestos {
      */
     public double promedioPreciosVehiculos() {
         double promedio = 0.0;
-
+        for (int i = 0; i < vehiculos.length; i++) {
+            System.out.println(vehiculos[i].darPrecio());
+            promedio = promedio + vehiculos[i].darPrecio();
+        }
+         promedio = promedio/vehiculos.length;
         return promedio;
     }
 
