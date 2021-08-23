@@ -345,13 +345,12 @@ public class CalculadorImpuestos {
      */
 
     public Vehiculo buscarVehiculoMasAntiguo() {
-        Vehiculo buscado = null;
+        Vehiculo buscado = vehiculos[5];
         for (Vehiculo v : vehiculos ){
-           if (Integer.parseInt(v.darAnio()) < Integer.parseInt(buscado.darAnio())) {
+           if (Integer.parseInt(v.darAnio()) <= Integer.parseInt(buscado.darAnio())) {
             buscado = v;
-        } }
-
-
+            }
+        }
         return buscado;
     }
 
