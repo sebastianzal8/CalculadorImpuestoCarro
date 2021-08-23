@@ -345,14 +345,16 @@ public class CalculadorImpuestos {
      */
 
     public Vehiculo buscarVehiculoMasAntiguo() {
-        Vehiculo buscado = vehiculos[5];
+        Vehiculo buscado = null;
+        int anioVeh = 2017;
         for (Vehiculo v : vehiculos ){
-           if (Integer.parseInt(v.darAnio()) <= Integer.parseInt(buscado.darAnio())) {
-            buscado = v;
-            }
-        }
+            if (Integer.parseInt(v.darAnio()) < anioVeh) {
+                buscado = v;
+            } }
+
         return buscado;
     }
+
 
     /**
      * Calcula el promedio de los precios de todos los automóviles que están en el sistema
